@@ -16,22 +16,19 @@ function MyNav() {
               <ul className="p-0">
                 <li>
                   <Nav.Link href="#">
-                    {" "}
-                    <i className="bi bi-house-door-fill"></i>&nbsp; Home{" "}
+                    <i className="bi bi-house-door-fill"></i>&nbsp; Home
                   </Nav.Link>
                 </li>
                 <li>
                   <Nav.Link href="#">
-                    {" "}
-                    <i className="bi bi-book-fill"></i>&nbsp; Your Library{" "}
+                    <i className="bi bi-book-fill"></i>&nbsp; Your Library
                   </Nav.Link>
                 </li>
                 <li>
                   <InputGroup className="input-group  mt-3">
                     <FormControl type="text" className="form-control" placeholder="Search" aria-label="Search" />
                     <Button variant="outline-secondary" className="btn-sm">
-                      {" "}
-                      GO{" "}
+                      GO
                     </Button>
                   </InputGroup>
                 </li>
@@ -46,7 +43,9 @@ function MyNav() {
           <Button className="btn login-btn" type="button">
             Login
           </Button>
-          <a href="#">Cookie Policy</a> | <a href="#">Privacy</a>
+          <div>
+            <a href="#">Cookie Policy</a> | <a href="#">Privacy</a>
+          </div>
         </div>
       </Navbar>
     </aside>
