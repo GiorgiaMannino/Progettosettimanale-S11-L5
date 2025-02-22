@@ -1,6 +1,25 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchSongsAction } from "../redux/actions";
+import Gallery from "./Gallery";
+
 const Main = () => {
+  const dispatch = useDispatch();
+  const { queen, katyperry, eminem } = useSelector((state) => state.song.songs);
+  const error = useSelector((state) => state.song.error);
+
+  useEffect(() => {
+    dispatch(fetchSongsAction("queen"));
+    dispatch(fetchSongsAction("katyperry"));
+    dispatch(fetchSongsAction("eminem"));
+  }, [dispatch]);
+
+  if (error) {
+    return <p className="text-danger">Errore: {error}</p>;
+  }
+
   return (
-    <main className="col-12 col-md-9 offset-md-3 mainPage">
+    <main className="col-12 col-md-9 offset-md-3 mainPage mb-5 ">
       <div className="row">
         <div className="col-9 col-lg-11 mainLinks d-none d-md-flex">
           <a href="#">TRENDING</a>
@@ -10,40 +29,12 @@ const Main = () => {
           <a href="#">DISCOVER</a>
         </div>
       </div>
-      <div className="row">
-        <div className="col-10">
-          <div id="rock">
-            <h2>Rock Classics</h2>
-            <div
-              className="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 imgLinks py-3"
-              id="rockSection"
-            ></div>
-          </div>
-        </div>
-      </div>
-      <div className="row">
-        <div className="col-10">
-          <div id="pop">
-            <h2>Pop Culture</h2>
-            <div
-              className="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 imgLinks py-3"
-              id="popSection"
-            ></div>
-          </div>
-        </div>
-      </div>
-      <div className="row">
-        <div className="col-10">
-          <div id="hiphop">
-            <h2>#HipHop</h2>
-            <div
-              className="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 imgLinks py-3"
-              id="hipHopSection"
-            ></div>
-          </div>
-        </div>
-      </div>
+
+      <Gallery title="Queen" songs={queen} />
+      <Gallery title="Katy Perry" songs={katyperry} />
+      <Gallery title="Eminem" songs={eminem} />
     </main>
   );
 };
+
 export default Main;
