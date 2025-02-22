@@ -170,3 +170,13 @@ ul {
 .mainPage img {
   width: 200px;
 }
+
+/*GALLERY*/
+
+.heart-icon {
+  color: white;
+}
+
+.heart-icon.favourite {
+  color: rgb(60, 211, 60);
+}

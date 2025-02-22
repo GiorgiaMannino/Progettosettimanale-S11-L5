@@ -1,8 +1,16 @@
-import { useDispatch } from "react-redux";
-import { setChosenSong } from "../redux/actions";
+import { useDispatch, useSelector } from "react-redux";
+import { setChosenSong, toggleFavouriteSong } from "../redux/actions";
 
 const Gallery = ({ title, songs }) => {
   const dispatch = useDispatch();
+  const favouriteSongs = useSelector((state) => state.favourites.favouriteSongs);
+
+  const isFavourite = (songId) => favouriteSongs.includes(songId);
+
+  const handleClick = (song) => {
+    console.log(song);
+    dispatch(toggleFavouriteSong(song));
+  };
 
   return (
     <div className="col-10">
@@ -26,6 +34,20 @@ const Gallery = ({ title, songs }) => {
                 <br />
                 Artist: {song.artist.name}
               </p>
+
+              <div className="d-flex justify-content-end">
+                <button
+                  onClick={() => handleClick(song)}
+                  className="btn"
+                  style={{ background: "none", border: "none" }}
+                >
+                  <i
+                    className={`bi bi-heart${isFavourite(song.id) ? "-fill" : ""} heart-icon ${
+                      isFavourite(song.id) ? "favourite" : ""
+                    }`}
+                  ></i>
+                </button>
+              </div>
             </div>
           ))}
         </div>

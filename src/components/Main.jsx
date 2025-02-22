@@ -31,9 +31,7 @@ const Main = () => {
       </div>
 
       {/* galleria dinamica per la ricerca */}
-      {searchedSongs?.length > 0 && (
-        <Gallery title={`Results for "${searchedSongs[0].artist.name}"`} songs={searchedSongs} />
-      )}
+      {searchedSongs?.length > 0 && <Gallery title={`${searchedSongs[0].artist.name}`} songs={searchedSongs} />}
 
       {/* gallerie fisse per gli artisti */}
       <Gallery title="Queen" songs={queen} />

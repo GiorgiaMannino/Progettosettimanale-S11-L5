@@ -1,6 +1,7 @@
 export const SET_SONGS = "SET_SONGS";
 export const SET_CHOSEN_SONG = "SET_CHOSEN_SONG";
 export const SET_SEARCHED_SONGS = "SET_SEARCHED_SONGS";
+export const TOGGLE_FAVOURITE_SONG = "TOGGLE_FAVOURITE_SONG";
 
 // fetch per recuperare le canzoni con l'artista dinamico
 export const fetchSongsAction = (artistName) => {
@@ -45,5 +46,11 @@ export const fetchSearchedSongs = (query) => {
 // azione selezione della canzone
 export const setChosenSong = (song) => ({
   type: SET_CHOSEN_SONG,
+  payload: song,
+});
+
+// azioneper mettere tra i preferiti la canzone
+export const toggleFavouriteSong = (song) => ({
+  type: TOGGLE_FAVOURITE_SONG,
   payload: song,
 });
