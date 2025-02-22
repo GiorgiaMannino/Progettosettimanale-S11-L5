@@ -1,7 +1,25 @@
 import { Navbar, Nav, Button, InputGroup, FormControl } from "react-bootstrap";
 import logo from "../assets/logo/logo.png";
 import "bootstrap-icons/font/bootstrap-icons.css";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { fetchSearchedSongs } from "../redux/actions";
+
 function MyNav() {
+  const [searchQuery, setSearchQuery] = useState("");
+  const dispatch = useDispatch();
+
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      dispatch(fetchSearchedSongs(searchQuery));
+    }
+  };
+
   return (
     <aside className="col col-2">
       <Navbar className="navbar navbar-expand-md fixed-left justify-content-between" id="sidebar">
@@ -25,12 +43,21 @@ function MyNav() {
                   </Nav.Link>
                 </li>
                 <li>
-                  <InputGroup className="input-group  mt-3">
-                    <FormControl type="text" className="form-control" placeholder="Search" aria-label="Search" />
-                    <Button variant="outline-secondary" className="btn-sm">
-                      GO
-                    </Button>
-                  </InputGroup>
+                  <form onSubmit={handleSearchSubmit}>
+                    <InputGroup className="input-group mt-3">
+                      <FormControl
+                        type="text"
+                        className="form-control"
+                        placeholder="Search for an artist"
+                        aria-label="Search"
+                        value={searchQuery}
+                        onChange={handleSearchChange}
+                      />
+                      <Button variant="outline-secondary" className="btn-sm" type="submit">
+                        GO
+                      </Button>
+                    </InputGroup>
+                  </form>
                 </li>
               </ul>
             </Nav>

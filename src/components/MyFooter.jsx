@@ -6,7 +6,7 @@ import nextImg from "../assets/playerbuttons/next.png";
 import repeatImg from "../assets/playerbuttons/repeat.png";
 
 const MyFooter = () => {
-  const chosenSong = useSelector((state) => state.song.chosenSong);
+  const chosenSong = useSelector((state) => state.chosenSong.chosenSong);
 
   return (
     <footer className="container-fluid fixed-bottom bg-container pt-1">

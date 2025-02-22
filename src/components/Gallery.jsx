@@ -15,8 +15,12 @@ const Gallery = ({ title, songs }) => {
                 className="img-fluid"
                 src={song.album.cover_medium}
                 alt="track"
-                onClick={() => dispatch(setChosenSong(song))}
+                onClick={() => {
+                  console.log(song);
+                  dispatch(setChosenSong(song));
+                }}
               />
+
               <p>
                 Track: &quot;{song.title}&quot;
                 <br />

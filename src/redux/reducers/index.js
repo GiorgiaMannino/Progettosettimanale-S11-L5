@@ -1,16 +1,16 @@
 export const SET_SONGS = "SET_SONGS";
-export const SET_CHOSEN_SONG = "SET_CHOSEN_SONG";
+export const SET_SEARCHED_SONGS = "SET_SEARCHED_SONGS";
 
 const initialState = {
   songs: {
     queen: [],
     katyperry: [],
     eminem: [],
+    searchedSongs: [],
   },
-  chosenSong: null,
 };
 
-const songReducer = (state = initialState, action) => {
+const mainReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_SONGS:
       return {
@@ -21,10 +21,13 @@ const songReducer = (state = initialState, action) => {
         },
       };
 
-    case SET_CHOSEN_SONG:
+    case SET_SEARCHED_SONGS:
       return {
         ...state,
-        chosenSong: action.payload,
+        songs: {
+          ...state.songs,
+          searchedSongs: action.payload.songs,
+        },
       };
 
     default:
@@ -32,4 +35,4 @@ const songReducer = (state = initialState, action) => {
   }
 };
 
-export default songReducer;
+export default mainReducer;

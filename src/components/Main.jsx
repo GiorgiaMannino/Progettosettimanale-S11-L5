@@ -5,8 +5,8 @@ import Gallery from "./Gallery";
 
 const Main = () => {
   const dispatch = useDispatch();
-  const { queen, katyperry, eminem } = useSelector((state) => state.song.songs);
   const error = useSelector((state) => state.song.error);
+  const { queen, katyperry, eminem, searchedSongs } = useSelector((state) => state.song.songs);
 
   useEffect(() => {
     dispatch(fetchSongsAction("queen"));
@@ -30,6 +30,12 @@ const Main = () => {
         </div>
       </div>
 
+      {/* galleria dinamica per la ricerca */}
+      {searchedSongs?.length > 0 && (
+        <Gallery title={`Results for "${searchedSongs[0].artist.name}"`} songs={searchedSongs} />
+      )}
+
+      {/* gallerie fisse per gli artisti */}
       <Gallery title="Queen" songs={queen} />
       <Gallery title="Katy Perry" songs={katyperry} />
       <Gallery title="Eminem" songs={eminem} />
