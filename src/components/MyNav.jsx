@@ -1,4 +1,5 @@
 import { Navbar, Nav, Button, InputGroup, FormControl } from "react-bootstrap";
+import { Link, useLocation } from "react-router-dom";
 import logo from "../assets/logo/logo.png";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { useState } from "react";
@@ -8,6 +9,7 @@ import { fetchSearchedSongs } from "../redux/actions";
 function MyNav() {
   const [searchQuery, setSearchQuery] = useState("");
   const dispatch = useDispatch();
+  const location = useLocation();
 
   const handleSearchChange = (e) => {
     setSearchQuery(e.target.value);
@@ -24,7 +26,7 @@ function MyNav() {
     <aside className="col col-2">
       <Navbar className="navbar navbar-expand-md fixed-left justify-content-between" id="sidebar">
         <div className="container flex-column align-items-start">
-          <Navbar.Brand className="navbar-brand" href="index.html">
+          <Navbar.Brand as={Link} to="/">
             <img src={logo} alt="Spotify Logo" width="131" height="40" />
           </Navbar.Brand>
 
@@ -33,12 +35,16 @@ function MyNav() {
             <Nav className="navbar-nav">
               <ul className="p-0">
                 <li>
-                  <Nav.Link href="#">
+                  <Nav.Link as={Link} to="/" className={location.pathname === "/" ? "active" : ""}>
                     <i className="bi bi-house-door-fill"></i>&nbsp; Home
                   </Nav.Link>
                 </li>
                 <li>
-                  <Nav.Link href="#">
+                  <Nav.Link
+                    as={Link}
+                    to="/yourlibrary"
+                    className={location.pathname === "/yourlibrary" ? "active" : ""}
+                  >
                     <i className="bi bi-book-fill"></i>&nbsp; Your Library
                   </Nav.Link>
                 </li>
@@ -78,4 +84,5 @@ function MyNav() {
     </aside>
   );
 }
+
 export default MyNav;

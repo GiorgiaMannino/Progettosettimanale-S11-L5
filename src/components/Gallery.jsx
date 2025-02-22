@@ -5,7 +5,7 @@ const Gallery = ({ title, songs }) => {
   const dispatch = useDispatch();
   const favouriteSongs = useSelector((state) => state.favourites.favouriteSongs);
 
-  const isFavourite = (songId) => favouriteSongs.includes(songId);
+  const isFavourite = (song) => favouriteSongs.some((s) => s.id === song.id);
 
   const handleClick = (song) => {
     console.log(song);
@@ -42,8 +42,8 @@ const Gallery = ({ title, songs }) => {
                   style={{ background: "none", border: "none" }}
                 >
                   <i
-                    className={`bi bi-heart${isFavourite(song.id) ? "-fill" : ""} heart-icon ${
-                      isFavourite(song.id) ? "favourite" : ""
+                    className={`bi bi-heart${isFavourite(song) ? "-fill" : ""} heart-icon ${
+                      isFavourite(song) ? "favourite" : ""
                     }`}
                   ></i>
                 </button>

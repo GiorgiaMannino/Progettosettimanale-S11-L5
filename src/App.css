@@ -86,6 +86,11 @@ ul {
   }
 }
 
+.navbar .navbar-nav .nav-link.active {
+  font-weight: bold;
+  color: white !important;
+}
+
 /* BOTTOM PLAYER SECTION*/
 
 .bg-container {

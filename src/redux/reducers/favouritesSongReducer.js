@@ -7,13 +7,14 @@ const initialState = {
 const favouritesSongReducer = (state = initialState, action) => {
   switch (action.type) {
     case TOGGLE_FAVOURITE_SONG: {
-      const songId = action.payload.id;
+      const song = action.payload;
+      const isAlreadyFavourite = state.favouriteSongs.some((s) => s.id === song.id);
 
       return {
         ...state,
-        favouriteSongs: state.favouriteSongs.includes(songId)
-          ? state.favouriteSongs.filter((id) => id !== songId)
-          : [...state.favouriteSongs, songId],
+        favouriteSongs: isAlreadyFavourite
+          ? state.favouriteSongs.filter((s) => s.id !== song.id)
+          : [...state.favouriteSongs, song],
       };
     }
     default:
