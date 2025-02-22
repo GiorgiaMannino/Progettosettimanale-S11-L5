@@ -1,4 +1,5 @@
 export const SET_SONGS = "SET_SONGS";
+export const SET_CHOSEN_SONG = "SET_CHOSEN_SONG";
 
 // fetch per recuperare le canzoni con l'artista dinamico
 export const fetchSongsAction = (artistName) => {
@@ -19,3 +20,9 @@ export const fetchSongsAction = (artistName) => {
     }
   };
 };
+
+// azione selezione della canzone
+export const setChosenSong = (song) => ({
+  type: SET_CHOSEN_SONG,
+  payload: song,
+});

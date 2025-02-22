@@ -1,4 +1,5 @@
-import { SET_SONGS } from "../actions";
+export const SET_SONGS = "SET_SONGS";
+export const SET_CHOSEN_SONG = "SET_CHOSEN_SONG";
 
 const initialState = {
   songs: {
@@ -6,7 +7,7 @@ const initialState = {
     katyperry: [],
     eminem: [],
   },
-  error: null,
+  chosenSong: null,
 };
 
 const songReducer = (state = initialState, action) => {
@@ -18,6 +19,12 @@ const songReducer = (state = initialState, action) => {
           ...state.songs,
           [action.payload.artistName]: action.payload.songs,
         },
+      };
+
+    case SET_CHOSEN_SONG:
+      return {
+        ...state,
+        chosenSong: action.payload,
       };
 
     default:
