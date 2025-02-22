@@ -13,24 +13,31 @@ const MyFooter = () => {
       <div className="row h-100">
         <div className="col-lg-10 offset-lg-2">
           <div className="row h-100 flex-column justify-content-center align-items-center">
-            <div className="d-flex justify-content-between align-items-center col-12">
-              {chosenSong && (
-                <div className="col-6 col-md-4 d-flex align-items-center justify-content-start mt-3">
-                  <img
-                    src={chosenSong.album.cover_medium}
-                    alt={chosenSong.title}
-                    className="playerImage"
-                    style={{ width: "50px", height: "50px", objectFit: "cover" }}
-                  />
-                  <div className="songDetails ms-3">
-                    <p className="songTitle text-white m-0">{chosenSong.title}</p>
-                    <p className="songArtist text-white m-0">{chosenSong.artist.name}</p>
-                  </div>
+            <div className="d-flex align-items-center col-12">
+              <div
+                className={`col-6 col-md-4 d-flex align-items-center justify-content-start ${chosenSong ? "mt-0" : ""}`}
+                style={{ display: chosenSong ? "flex" : "none" }}
+              >
+                <img
+                  src={chosenSong?.album.cover_medium}
+                  alt={chosenSong?.title}
+                  className="playerImage"
+                  style={{
+                    width: "50px",
+                    height: "50px",
+                    objectFit: "cover",
+                    display: chosenSong ? "block" : "none",
+                  }}
+                />
+                <div className="songDetails ms-3">
+                  <p className="songTitle text-white m-0 fw-bold">{chosenSong?.title}</p>
+                  <p className="songArtist text-secondary m-0">{chosenSong?.artist.name}</p>
                 </div>
-              )}
+              </div>
+
               <div className="col-6 col-md-4 playerControls">
                 <div className="d-flex">
-                  <a href="#">
+                  <a href="#" className="prova">
                     <img src={shuffleImg} alt="shuffle" />
                   </a>
                   <a href="#">
