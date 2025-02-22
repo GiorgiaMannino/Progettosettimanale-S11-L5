@@ -19,7 +19,7 @@ const Main = () => {
   }
 
   return (
-    <main className="col-12 col-md-9 offset-md-3 mainPage mb-5 ">
+    <main className="col-12 col-md-9 offset-md-3 mainPage">
       <div className="row">
         <div className="col-9 col-lg-11 mainLinks d-none d-md-flex">
           <a href="#">TRENDING</a>
@@ -34,9 +34,11 @@ const Main = () => {
       {searchedSongs?.length > 0 && <Gallery title={`${searchedSongs[0].artist.name}`} songs={searchedSongs} />}
 
       {/* gallerie fisse per gli artisti */}
-      <Gallery title="Queen" songs={queen} />
-      <Gallery title="Katy Perry" songs={katyperry} />
-      <Gallery title="Eminem" songs={eminem} />
+      <div style={{ marginBottom: "7rem" }}>
+        <Gallery title="Queen" songs={queen} />
+        <Gallery title="Katy Perry" songs={katyperry} />
+        <Gallery title="Eminem" songs={eminem} />
+      </div>
     </main>
   );
 };

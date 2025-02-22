@@ -12,17 +12,17 @@ function YourLibrary() {
   };
 
   return (
-    <section className="col-12 col-md-9 offset-md-3 mainPage mb-5">
-      <div className="row">
+    <section className="col-12 col-md-9 offset-md-3 mainPage mb-5 pe-5">
+      <div className="row ">
         <div className="col-9 col-lg-11 mainLinks d-none d-md-flex"></div>
       </div>
       <h2 className="text-white mt-5 mb-5">Your Library</h2>
-      <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3">
+      <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3  ">
         {favouriteSongs.length ? (
           favouriteSongs.map(
             ({ id, title, album, artist }) =>
               album?.cover_medium && (
-                <div className="col text-center" key={id}>
+                <div className="col text-center mb-5" key={id}>
                   <img className="img-fluid" src={album.cover_medium} alt={title} />
                   <p className="mb-0 text-white">
                     Track: &quot;{title}&quot;
